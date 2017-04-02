@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js-task4</title>
+	<style type="text/css">
+		#context{
+			width: 100%;
+		}
+	    .box{
+	    	background-color: red;
+	    	height: 50px;
+	    	width: 50px;
+	    	color: white;
+	    	font-size: 30px;
+	    	text-align: center;
+	    	margin-right: 10px; 
+	    	display: inline-block;
+	    }
+
+	    #input_text,#left_in,#right_in,#left_out,#right_out{
+	    	margin-bottom: 10px;
+	    }
+	</style>
+</head>
+<body>
+
+	<input type="text" id="input_text">
+	<button id=left_in>左侧入</button>
+	<button id="right_in">右侧入</button>
+	<button id="left_out">左侧出</button>
+	<button id="right_out">右侧出</button>
+	<div id="context"></div>
+
+	<script type="text/javascript">
+		function upCase(){
+			var text=document.getElementById("input_text");
+			var pattern=/^\d+$/;
+			if(pattern.test(text.value)){
+				return true;
+			}
+			else{
+				alert("您输入的内容有误，请输入100以内整数！");
+				return false;
+			}
+
+		}
+	    var div_context=document.getElementById("context");
+
+		var btnLeftIn=document.getElementById("left_in");
+		btnLeftIn.onclick=function(){
+			if(upCase()){
+				var num=document.getElementById("input_text");
+				var div=document.createElement("div");
+				div.className="box";
+
+				var textNode=document.createTextNode(num.value);
+				div.appendChild(textNode);
+				if(document.firstChild!=null){
+					div_context.insertBefore(div,div_context.firstChild);
+				}
+				else{
+					div_context.appendChild(div);
+				}
+			}
+		}
+        
+
+        var btnRightIn=document.getElementById("right_in");
+		btnRightIn.onclick=function(){
+			if(upCase()){
+				var num=document.getElementById("input_text");
+				var div=document.createElement("div");
+				div.className="box";
+
+				var textNode=document.createTextNode(num.value);
+				div.appendChild(textNode);
+				div_context.appendChild(div);
+			}
+
+		}
+
+		var btnLeftOut=document.getElementById("left_out");
+		btnLeftOut.onclick=function(){
+			var first_child=div_context.firstChild;
+			div_context.removeChild(first_child);
+			alert(first_child.innerText);
+		}
+
+		var btnRightOut=document.getElementById("right_out");
+		btnRightOut.onclick=function(){
+			var last_child=div_context.lastChild;
+			div_context.removeChild(last_child);
+			alert(last_child.innerText);
+		}
+
+	</script>
+</body>
+</html>

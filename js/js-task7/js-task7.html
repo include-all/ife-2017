@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js-task7</title>
+	<style type="text/css">
+		div{
+			border:solid 1px black;
+			padding: 10px;
+ 			background-color: white;
+		}
+
+		#box1{
+			width: 800px;
+			margin: 0px auto;
+		}
+
+		.box2{
+			width: 778px;
+			margin:10px 0px;
+			display: inline-block;
+		}
+		.box3{
+			width: 350px;
+			margin: 5px;
+			display: inline-block;
+		}
+		.box4{
+			margin: 5px;
+			width: 140px;
+			display: inline-block;
+		}
+		.box5{
+			margin: 5px;
+			width: 35px;
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div id="box1">
+		<div class="box2">
+			<div class="box3">
+				<div class="box4">
+					<div class="box5"></div>
+					<div class="box5"></div>
+				</div>
+				<div class="box4">
+					<div class="box5"></div>
+					<div class="box5"></div>
+				</div>
+			</div>
+			<div class="box3">
+				<div class="box4">
+					<div class="box5"></div>
+					<div class="box5"></div>
+				</div>
+				<div class="box4">
+					<div class="box5"></div>
+					<div class="box5"></div>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="box2">
+			<div class="box3">
+				<div class="box4">
+					<div class="box5"></div>
+					<div class="box5"></div>
+				</div>
+				<div class="box4">
+					<div class="box5"></div>
+					<div class="box5"></div>
+				</div>
+			</div>
+			<div class="box3">
+				<div class="box4">
+					<div class="box5"></div>
+					<div class="box5"></div>
+				</div>
+				<div class="box4">
+					<div class="box5"></div>
+					<div class="box5"></div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<button id="button">开始遍历</button>
+
+	<script type="text/javascript">
+		var filter=function(node){
+			return node.tagName.toLowerCase()=="div"?
+					NodeFilter.FILTER_ACCEPT:
+					NodeFilter.FILTER_SKIP;
+		}
+	 	var div=document.getElementById("box1");
+
+
+	 	var button=document.getElementById("button");
+	 	var time=null;
+	 	button.onclick=function(){
+	 		var iterator=document.createNodeIterator(div,NodeFilter.SHOW_ELEMENT,filter,false);
+	 		var i=0;
+	 		var node=iterator.nextNode();
+	 		var nodeTemp=node;
+	 		time=setInterval(function(){
+	 			if(i!=0){
+	 				nodeTemp.style.backgroundColor="white";
+	 			}
+	 			if(node==null){
+	 				clearInterval(time);
+	 				return;
+	 			}
+	 			node.style.backgroundColor="blue";
+	 			nodeTemp=node;
+	 			node=iterator.nextNode();
+	 			i++;
+	 		},500);
+	    }
+	</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+        body{
+			background-color: rgb(222,222,222);
+			font-family: SimHei;
+		}
+		.header{
+			background-color: rgb(51,51,51);
+			width: 100%;
+		}
+		.header a:link{
+			color: white;
+			text-decoration: none;
+		}
+		.header a:visited{
+			color: gray;
+		}
+		.list1 li{
+			float: right;
+			margin: 20px;
+			width: 90px;
+		}
+		.article{
+			border-style: outset;
+			margin: 20px 20px 20px 20px;
+			padding: 20px;
+			background-color: #ffffff;
+			text-indent: 2em;
+		}
+		
+		.h3_color{
+			color: gray;
+		}
+	    .author{
+			color: gray;
+		}
+
+		.list2 li{
+			list-style: none;
+		}
+
+		.picture{
+			border-style: groove;
+			padding: 10px;
+			width: 385px;
+		}
+		ol li{
+			width: 50px;
+			text-indent: 0em;
+			font-weight: bold;
+		}
+		table{
+			border-style: solid;
+			border-width: thin;
+			border-color: rgb(204,204,204);
+			border-collapse: collapse;
+			width: 100%;
+		}
+		th,td{
+			border-style: solid;
+			border-width: thin;
+			border-color: rgb(204,204,204);
+			text-align: left;
+			text-indent: 0em;
+		}
+		th{
+			background-color: rgb(51,51,51);
+			color: white;
+		}
+		.last_line{
+			background-color: rgb(204,204,204);
+		}
+
+		.line{
+			height: 60px;
+			width: 0px;
+			border-width: 2px;
+			border-color: rgb(204,204,204);
+			border-style: solid;
+			float: left;
+		}
+
+		.h3_1{
+			text-indent: 0em;
+			margin-left: 20px;
+		}
+
+		.formTableRow{
+			text-indent: 0em;
+		}
+
+		.tableRow{
+			display: table-row;
+		}
+
+
+		.tableRow p{
+			display: table-cell;
+			vertical-align: top;
+			padding: 10px;
+		}
+		form textarea{
+			width: 600px;
+			height: 100px;
+		}
+
+		.tableRow p:first-child{
+			text-align: right;
+		}
+
+		.hit{
+			color: gray;
+		}
+
+		.submit_css{
+			width: 100%;
+			background-color: rgb(51,85,208);
+			height: 50px;
+			border-radius: 10px;
+			color: white;
+		}
+		

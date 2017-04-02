@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js-tak9</title>
+	<style type="text/css">
+		#supper{
+			height: 100%;
+		}
+
+		div{
+			flex: 0;
+            display: flex;
+			border: 1px solid black;
+			background-color: white;
+			padding: 5px;
+			margin: 1px;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="supper">
+		Super
+		<div id="cook">
+			Cook
+			<div id="apple">
+				Apple
+				<div id="pear">
+					Pear
+				</div>
+				<div id="pig">
+					Pig
+				</div>
+				<div id="colo">
+					Colo
+				</div>
+				<div id="soccer">
+					Soccer
+				</div>
+			</div>
+			<div id="phone">
+				Phone
+			</div>
+			<div id="blank_1">
+				<div id="book">
+					Book
+				</div>
+				<div id="school">
+					School
+				</div>
+			</div>
+		</div>
+
+
+		<div id="note">
+			Note
+			<div id="human">
+				Human
+				<div id="code">
+					Code
+				</div>
+				<div id="opreate">
+					Operate
+				</div>
+				<div id="man">
+					Man
+				</div>
+			</div>
+			<div id="program">
+				Program
+				<div id=bement>
+					Bement
+					<div id="cat">
+						Cat
+					</div>
+				</div>
+				<div id="glass">
+					Glass
+				</div>
+			</div>
+		</div>
+
+
+		<div id="fish">
+			Fish
+		</div>
+	</div>
+
+	<button id="delete">删除</button><br>
+	<input type="text" id="text">
+	<button id="add">添加</button>
+
+	<script type="text/javascript">
+
+		var supper=document.getElementById("supper");
+		function clickDiv(event){
+			clearDivStyle();
+			var div = event.target;
+			div.style.backgroundColor="red";
+		}
+
+		function clearDivStyle(){
+			var divList=document.getElementsByTagName("div");
+			for(var i=0;i<divList.length;i++){
+				divList[i].style.backgroundColor="white";
+			}
+		}
+
+		function deleteDiv(divs){
+			for (var i = 0; i < divs.length; i++) {
+                if (divs[i].style.backgroundColor == "red") {
+                    var parent = divs[i].parentElement;
+                    parent.removeChild(divs[i]);
+                }
+            }
+		}
+
+		 function addDiv(divs) {
+            var text = document.getElementById("text").value;
+            var newNode = document.createElement("div");
+            newNode.innerHTML = text;
+            for (var i = 0; i < divs.length; i++) {
+                if (divs[i].style.backgroundColor === "red") {
+                    divs[i].appendChild(newNode);
+                }
+            }
+        }
+
+        function init(){
+        	var divs=document.getElementsByTagName("div");
+        	for(var i=0;i<divs.length;i++){
+        		divs[i].onclick=function(event){
+        			clickDiv(event);
+        			event.stopPropagation();
+        		}
+        	}
+        	var btnDelete=document.getElementById("delete");
+        	btnDelete.addEventListener("click",function(){
+        		deleteDiv(divs);
+        	},false);
+
+        	var btnAdd=document.getElementById("add");
+        	btnAdd.addEventListener("click",function(){
+        		addDiv(divs);
+        	},false);
+        }
+
+        init();
+
+
+	</script>
+</body>
+</html>

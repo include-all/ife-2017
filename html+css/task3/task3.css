@@ -1,0 +1,45 @@
+.main{
+	position: relative;
+	background-color: #eee;
+	padding: 20px;
+	border-color: #999;
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto; 
+	height: 100%;
+}
+
+.left{
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width:200px;
+	padding: 20px;
+	border-color: #999;
+	text-align: center;
+	background-color: white;
+}
+
+.left h3{
+	float: right;
+}
+
+.right{
+	width: 120px;
+	padding: 20px;
+	border-color: #999;
+	text-align: center;
+	background-color: white;
+	float: right;
+}
+
+img{
+	margin-bottom: 20px;
+}
+.center{
+	padding: 20px;
+	margin-top: 0px;
+	margin-left: 260px;
+	margin-right: 180px;
+	background-color: white;
+}

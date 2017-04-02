@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#container div{
+			height: 50px;
+			line-height: 50px;
+			padding: 5px;
+			color: white;
+			background: blue;
+			float: left;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		button{
+			margin-bottom: 10px;
+			margin-left: 10px;
+		}
+		span{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<textarea id="textarea" rows="10" cols="50"></textarea>
+	<button id="confirm">确认</button><br>
+	<input type="text" id="input">
+	<button id="search">查询</button>
+	<button id="clear">清除</button>
+	<button id="left-in">左侧入</button>   
+	<button id="right-in">右侧入</button>
+	<button id="left-out">左侧出</button>
+	<button id="right-out">右侧出</button>
+	<div id="container"></div>
+
+	<script type="text/javascript">
+		var text=document.getElementById("textarea"),
+		input=document.getElementById("input"),
+		btnCofirm=document.getElementById("confirm"),
+		btnSerch=document.getElementById("search"),
+		btnClear=document.getElementById("clear"),
+		btnLeftIn=document.getElementById("left-in"),
+		btnRightIn=document.getElementById("right-in"),
+		btnLeftOut=document.getElementById("left-out"),
+		btnRightOut=document.getElementById("right-out"),
+		container=document.getElementById("container"),
+        //数组用来存储输入的数据
+        arr=[];
+    //适用于确认按钮，使用DOM创建子节点
+    function change() {
+    	var str=text.value.trim().split(/[,\s+、，\r/]+/g);
+    	for(var i=0;i<str.length;i++){
+    		arr.push(str[i]);
+    	}
+    	for(var j=0;j<arr.length;j++){
+    		var div=document.createElement("div");
+    		div.innerHTML=arr[j];
+    		container.appendChild(div);
+    	}   
+    }
+    //适用于bt4,bt5,bt6,bt7 4个按钮,使用innerHTML来渲染内容
+    function arrChange(){
+    	var str=arr.toString().split(/[,\s、，\r]+/gm);
+    	arr=[];
+    	for(var i=0;i<str.length;i++){
+    		arr.push(str[i]);
+    	}
+    	var strr="";
+    	for(var j=0;j<arr.length;j++){
+    		strr+="<div>"+arr[j]+"</div>";
+    	}
+    	container.innerHTML=strr;
+    	strr="";
+    }
+    //遍历divs里的内容，使用search()来查询是否符合input的条件
+    function search(){
+    	var inp=input.value;
+    	var divs=container.getElementsByTagName("div");
+    	for(var i=0;i<divs.length;i++){
+    		var d=divs[i].innerHTML.replace(new RegExp(inp,"gm"),"<span>"+inp+"</span>");
+    		divs[i].innerHTML=d;
+    	}   
+    }
+    //为每个按钮添加事件监听
+    function event(){
+    	btnCofirm.addEventListener("click",function(){
+    		change();
+    	},false);
+    	btnSerch.addEventListener("click",function(){
+    		search();
+    	},false);
+    	btnClear.addEventListener("click",function(){
+    		clear();
+    	},false);
+    	btnLeftIn.addEventListener("click",function(){
+    		arr.unshift(text.value.trim());
+    		arrChange();
+    	},false);
+    	btnRightIn.addEventListener("click",function(){
+    		arr.push(text.value.trim());
+    		arrChange();
+    	},false);
+    	btnLeftOut.addEventListener("click",function(){
+    		arr.shift(text.value.trim());
+    		arrChange();
+    	},false);
+    	btnRightOut.addEventListener("click",function(){
+    		arr.pop(text.value.trim());
+    		arrChange();
+    	},false);
+    }
+    //清除container内的内容
+    function clear(){
+    	arr=[];
+    	container.innerHTML="";
+    }
+    event();
+</script>
+</body>
+</html>
